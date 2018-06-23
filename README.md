@@ -1,14 +1,15 @@
 # Momentum Clone
----
+
 A task manager similar to the Momentum browser extension with added functionality | Chingu Voyage-6 | https://chingu.io/
 
 
 ## Technology Stack
----
+
 * React
 
+
 ## MVP
----
+
 ### Background
 * Find the images for the Background
 * Add the images as a background, ensuring that they are mobile responsive
@@ -28,6 +29,9 @@ A task manager similar to the Momentum browser extension with added functionalit
 * Add animation for deleting tasks
 * Add animation for adding tasks
 * Make the order of the tasks listed changeable
+
+
+## Team
 
 | Member Name            | Team Role           |
 | :---                   | :---                |
