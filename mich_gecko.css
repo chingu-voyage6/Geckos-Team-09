@@ -1,0 +1,41 @@
+.geckoMaster img {
+    min-height: 30rem;
+    position: relative;
+    display: table;
+    width: 100%;
+    height: auto;
+    /*     padding-top: 2rem; */
+    /*     padding-bottom: 8rem; */
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /*     margin-top: 3.5em; */
+}
+
+.geckoMaster h1 {
+    font-size: 4em;
+    margin: auto;
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    text-align: center;
+    color: white;
+}
+
+.geckoMaster h5 {
+    font-size: 1.5em;
+    margin: auto;
+    position: absolute;
+    top: 220px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    text-align: center;
+    color: white;
+}
