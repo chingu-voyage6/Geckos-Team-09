@@ -50,7 +50,7 @@ setInterval(function(){
     // console.log(currentHour);
     // console.log(currentMinute);
     // console.log(currentSecond);
-    if (currentHour === 10 && currentMinute === 33 && currentSecond === 50 ) {//checks if it's the exact time to change the background image
+    if (currentHour === 10 && currentMinute === 41 && currentSecond === 30 ) {//checks if it's the exact time to change the background image
         let randomNum = Math.floor(Math.random() * 6); //generates a random number from 0 to 5 (number of images on the object)
         //console.log("random Number: ", randomNum);
         let selectedImg = img[randomNum].image; //gets a random image from the object and assign to a variable
