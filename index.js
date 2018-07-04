@@ -57,4 +57,4 @@ setInterval(function(){
         let imgUrl = "url('" + selectedImg + "')"; // changes the format 
         document.body.style.backgroundImage = imgUrl; // changes the background image
     }
-},500);
+},1000);
