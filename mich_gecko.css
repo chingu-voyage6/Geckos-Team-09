@@ -1,5 +1,5 @@
 body {
-    background: url("https://images.unsplash.com/photo-1502786129293-79981df4e689?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ca8929ea79462f07dc08e1245b63aa75&auto=format&fit=crop&w=889&q=80");
+    /* background: url("https://images.unsplash.com/photo-1502786129293-79981df4e689?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ca8929ea79462f07dc08e1245b63aa75&auto=format&fit=crop&w=889&q=80"); */
     
     background-color: white;
     background-size: cover;
@@ -7,7 +7,7 @@ body {
 
 
 .geckoMaster img {
-    min-height: 30rem;
+    min-height: 28rem;
     position: relative;
     display: table;
     width: 100%;
