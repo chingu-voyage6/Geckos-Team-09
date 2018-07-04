@@ -42,7 +42,7 @@ const img = [
 ]
 
 //This function will generate date  Date/Hour/Minute/Second from the user computer at each 1s (1000ms) and change the background image on the exact time that will be set
-setInterval(function(){ 
+setInterval(() => { 
     let currentDate = new Date();
     let currentHour = currentDate.getHours();
     let currentSecond = currentDate.getSeconds();
