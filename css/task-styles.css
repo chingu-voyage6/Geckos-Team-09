@@ -36,11 +36,15 @@
   overflow-y: auto; /* Change div size automatically*/
 }
 
+.style-checkbox{
+  float: left;
+  clear: left;
+}
+
 .style-task-paragraph{
   /*position: relative;*/
   float: left;
   margin-top: 0.025em;
-  clear: left;
   max-width: 60%;
 }
 

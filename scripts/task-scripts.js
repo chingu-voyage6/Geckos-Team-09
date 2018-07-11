@@ -1,15 +1,15 @@
-// Coded by Dezmond Huston
 var taskForm = document.querySelector('.task-form');
-var toDoElement = document.querySelector(".style-to-do");
-var elementList, divNameID, nodeValue, node;
+var toDoElement = document.querySelector('.style-to-do');
+var checkboxElement = document.querySelector('.style-checkbox');
+var elementList, divNameID, nodeValue, node, boolCheck;
 var unorderedStorageArr = [];
 var orderedStorageArr = [];
+var JSONArr = [];
 var count = 0;
 
 
 // Run onload
 window.onload = function(){
-
 
 
 
@@ -56,12 +56,21 @@ taskForm.addEventListener("submit", function(event){
   // Prevents default action of reloading the page
   event.preventDefault();
 
-  nodeValue = taskForm[0].value;
-  //node = document.createTextNode(nodeValue);
+  // Create bool for checkbox as false
+  boolCheck = false;
+
+  // Assign text and bool values to nodeValue
+  JSONArr.push(taskForm[0].value);
+  JSONArr.push(boolCheck);
+  nodeValue = JSON.stringify(JSONArr);
+
   divNameID = "myDiv-name-" + count;
 
   addTask(nodeValue, divNameID);
   addLocalStorage(nodeValue, divNameID);
+
+  // Clear JSONArr value
+  JSONArr = [];
 
 });
 
@@ -76,7 +85,7 @@ toDoElement.addEventListener("click", function(event){
     // Remove entire div belonging to the target "Delete" button
     target.parentElement.remove();
 
-    //
+    // Remove the task from localStorage as well
     localStorage.removeItem(target.parentElement.id);
 
     // Get all elements that have the correct id
@@ -89,10 +98,48 @@ toDoElement.addEventListener("click", function(event){
 });
 
 
+
+// Update boolCheck when checkbox is clicked
+toDoElement.addEventListener("click", function(event){
+
+var target = event.target;
+
+// Check if checkbox was clicked
+if(target.className == "style-checkbox"){
+
+  // Get localStorage id and value, and change the value of boolCheck
+  var myDivName = target.parentElement.id;
+  var myLocalJSON = JSON.parse(localStorage.getItem(myDivName));
+  boolCheck = target.checked;
+
+  myLocalJSON[1] = boolCheck;
+
+  var myNodeValue = JSON.stringify(myLocalJSON);
+
+  // Update localStorage with new boolCheck value
+  localStorage.setItem(myDivName, myNodeValue);
+
+	/*if(target.checked == true){
+      //console.log(target);
+    }else{
+      //console.log("unchecked");
+    }*/
+  } else {
+    return;
+  }
+
+});
+
+
+
 // Adds Task
 function addTask(_nodeValue, _divNameID){
+
+  // Turn _nodeValue into JSON array
+  _nodeValue = JSON.parse(_nodeValue);
+
   // Remove all empty spaces from the string to test and put paragraph value into nodeValue
-  var testStringNoSpaces = _nodeValue.replace(/\s/g, "");
+  var testStringNoSpaces = _nodeValue[0].replace(/\s/g, "");
 
   // Prevent empty strings or strings with only spaces from being submitted
   if (testStringNoSpaces != "") {
@@ -100,9 +147,21 @@ function addTask(_nodeValue, _divNameID){
     // Create div
     var myDiv = document.createElement("div");
 
+
+    // Make checkbox
+    var myCheck = document.createElement("INPUT");
+    myCheck.setAttribute("type", "checkbox");
+
+    // Make checkbox value change to the value it has saved
+    if(_nodeValue[1]){
+      myCheck.checked = nodeValue[1];
+  } else{
+      myCheck.checked = boolCheck;
+  }
+
     // Make paragraph and give it the task text as a value
     var para = document.createElement("p");
-    node = document.createTextNode(_nodeValue);
+    node = document.createTextNode(_nodeValue[0]);
     para.appendChild(node);
 
     // Create Delete button
@@ -112,13 +171,15 @@ function addTask(_nodeValue, _divNameID){
 
     // Add class to the paragraph, myDiv, and delete button
     myDiv.classList.add("style-task-div");
+    myCheck.classList.add("style-checkbox");
     para.classList.add("style-task-paragraph");
     btn.classList.add("style-task-delete");
 
     // Add id to paragraph
     myDiv.id = _divNameID;
 
-    // Make paragraph and button a child of myDiv
+    // Make paragraph, checkbox, and button a child of myDiv
+    myDiv.appendChild(myCheck);
     myDiv.appendChild(para);
     myDiv.appendChild(btn);
 
@@ -137,7 +198,11 @@ function addTask(_nodeValue, _divNameID){
 
 function addLocalStorage(_nodeValue, _divNameID){
 
-  if(_nodeValue){
+// Temp JSON holder
+var myJSON = JSON.parse(_nodeValue);
+
+// Check if localStorage has value after removing spaces
+  if(myJSON[0].replace(/\s/g, "")){
     // Make localStorage
     localStorage.setItem(_divNameID, _nodeValue);
 
@@ -160,4 +225,3 @@ function comparison(a, b) {
   return parseInt(c[c.length - 1]) - parseInt(d[d.length - 1]);
 
 }
-// Coded by Dezmond Huston
