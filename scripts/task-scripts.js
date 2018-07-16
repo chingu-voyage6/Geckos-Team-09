@@ -36,10 +36,6 @@ if(localStorage.getItem(localStorage.key(0)) !== null){
   }
 
 
-
-
-
-
   // Change count to prevent count from being overwritten
   var tempCountArr = orderedStorageArr[orderedStorageArr.length - 1][0].split("-");
   var tempCount = parseInt(tempCountArr[tempCountArr.length - 1]);
@@ -81,10 +77,12 @@ toDoElement.addEventListener("click", function(event){
 
   // Stops it from deleting anything other than the style-task-delete parent
   if(target.className == "style-task-delete"){
-
-    // Remove entire div belonging to the target "Delete" button
-    target.parentElement.remove();
-
+    
+    // Remove entire div belonging to the target "Delete" button with animation
+    if (node.parentElement) {
+      target.parentElement.classList.toggle("removeAnime");
+      setTimeout(() => target.parentElement.remove(), 1000);
+    }
     // Remove the task from localStorage as well
     localStorage.removeItem(target.parentElement.id);
 

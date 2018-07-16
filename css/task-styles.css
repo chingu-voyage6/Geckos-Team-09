@@ -31,9 +31,18 @@
 
 }
 
+.removeAnime {
+  transition: .5s;
+  transition-timing-function: ease-out; 
+  transform: translateY(0);
+  opacity: 0;
+}
+
+
 .style-task-div{
   width: 100%;
   overflow-y: auto; /* Change div size automatically*/
+  
 }
 
 .style-checkbox{
