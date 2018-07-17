@@ -12,6 +12,7 @@
   width: 15em;
   height: 10em;
   background-color: grey;
+  z-index: 200;
 }
 
 .style-task{
@@ -28,21 +29,11 @@
   background-color: pink;
   overflow: auto;
   word-wrap: break-word;
-
 }
-
-.removeAnime {
-  transition: .5s;
-  transition-timing-function: ease-out; 
-  transform: translateY(0);
-  opacity: 0;
-}
-
 
 .style-task-div{
   width: 100%;
   overflow-y: auto; /* Change div size automatically*/
-  
 }
 
 .style-checkbox{
@@ -61,5 +52,5 @@
   /*position: relative;*/
   float: right;
   margin: 0;
-  clear: right;
+  clear: right;  
 }
