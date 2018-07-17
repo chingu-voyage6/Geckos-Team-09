@@ -183,7 +183,7 @@ function addTask(_nodeValue, _divNameID){
     myDiv.appendChild(para);
     myDiv.appendChild(btn);
 
-    // Make myDiv a child of the div with a class of "style-to-do"
+    // Make myDiv a child of the div with a class of style-to-do
     var element = document.querySelector(".style-to-do");
     element.appendChild(myDiv);
 
