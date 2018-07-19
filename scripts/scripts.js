@@ -83,8 +83,10 @@ toDoElement.addEventListener("click", function(event){
   if(target.className == "style-task-delete"){
 
     // Remove entire div belonging to the target "Delete" button
-    target.parentElement.remove();
-
+    if (node.parentElement) { 
+    target.parentElement.classList.toggle("removeAnime"); 
+  setTimeout(() => target.parentElement.remove(), 1000); 
+  }
     // Remove the task from localStorage as well
     localStorage.removeItem(target.parentElement.id);
 
@@ -92,7 +94,7 @@ toDoElement.addEventListener("click", function(event){
     elementList = document.querySelectorAll("[id^=myDiv-name]");
 
 
-  } else{
+  } else {
     return;
   }
 });
