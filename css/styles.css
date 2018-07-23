@@ -42,6 +42,10 @@
   clear: left;
 }
 
+.strikethrough{
+  text-decoration: line-through;
+}
+
 .style-task-paragraph{
   /*position: relative;*/
   float: left;
