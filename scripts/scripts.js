@@ -11,21 +11,21 @@ var count = 0;
 // Run onload
 window.onload = function(){
 
+var reg = /myDiv-name-\d/;
 
-
-// Check if localStorage exists
-if(localStorage.getItem(localStorage.key(0)) !== null){
-
+// Try if localStorage exists
+try{
 
   // Push localStorage values to unorderedStorageArr
   for(var i = 0; i < localStorage.length; i++){
+    // Check if key matches reg before adding it to unorderedStorageArr
+    if(localStorage.key(i).match(reg)){
     unorderedStorageArr.push([localStorage.key(i), localStorage.getItem(localStorage.key(i))]);
+}
   }
 
   // Put Sorted Array values into orderedStorageArr
   orderedStorageArr = unorderedStorageArr.sort(comparison);
-
-
 
   // Repopulate tasks onload
   for(var i = 0; i < orderedStorageArr.length; i++){
@@ -44,9 +44,9 @@ if(localStorage.getItem(localStorage.key(0)) !== null){
   var tempCountArr = orderedStorageArr[orderedStorageArr.length - 1][0].split("-");
   var tempCount = parseInt(tempCountArr[tempCountArr.length - 1]);
   count = tempCount + 1;
-} else{
+}
+catch{
   return;
-
 }
 
 };
@@ -83,9 +83,9 @@ toDoElement.addEventListener("click", function(event){
   if(target.className == "style-task-delete"){
 
     // Remove entire div belonging to the target "Delete" button
-    if (node.parentElement) { 
-    target.parentElement.classList.toggle("removeAnime"); 
-  setTimeout(() => target.parentElement.remove(), 1000); 
+    if (node.parentElement) {
+    target.parentElement.classList.toggle("removeAnime");
+  setTimeout(() => target.parentElement.remove(), 1000);
   }
     // Remove the task from localStorage as well
     localStorage.removeItem(target.parentElement.id);
@@ -121,11 +121,6 @@ if(target.className == "style-checkbox"){
   // Update localStorage with new boolCheck value
   localStorage.setItem(myDivName, myNodeValue);
 
-	/*if(target.checked == true){
-      //console.log(target);
-    }else{
-      //console.log("unchecked");
-    }*/
   } else {
     return;
   }

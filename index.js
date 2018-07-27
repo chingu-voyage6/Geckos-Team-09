@@ -1,6 +1,14 @@
 'use strict'
 
 
+// Run onload
+window.addEventListener("load", function(){
+  if(localStorage.key("BG-Image-Zed") !== null){
+  document.body.style.backgroundImage = localStorage.getItem("BG-Image-Zed");
+}
+}, false);
+
+
 //array of object for unsplash images (could be just an array, I made an object for a better debugging)
 const img = [
     {
@@ -42,19 +50,23 @@ const img = [
 ]
 
 //This function will generate date  Date/Hour/Minute/Second from the user computer at each 1s (1000ms) and change the background image on the exact time that will be set
-setInterval(function(){ 
+setInterval(function(){
     let currentDate = new Date();
     let currentHour = currentDate.getHours();
     let currentSecond = currentDate.getSeconds();
     let currentMinute  = currentDate.getMinutes();
-    // console.log(currentHour);
-    // console.log(currentMinute);
-    // console.log(currentSecond);
+
     if (currentHour === 10 && currentMinute === 41 && currentSecond === 30 ) {//checks if it's the exact time to change the background image
-        let randomNum = Math.floor(Math.random() * 6); //generates a random number from 0 to 5 (number of images on the object)
-        //console.log("random Number: ", randomNum);
-        let selectedImg = img[randomNum].image; //gets a random image from the object and assign to a variable
-        let imgUrl = "url('" + selectedImg + "')"; // changes the format 
-        document.body.style.backgroundImage = imgUrl; // changes the background image
+
+        randomImg();
     }
 },1000);
+
+// Create a random background image
+function randomImg(){
+  let randomNum = Math.floor(Math.random() * 6); //generates a random number from 0 to 5 (number of images on the object)
+  let selectedImg = img[randomNum].image; //gets a random image from the object and assign to a variable
+  let imgUrl = "url('" + selectedImg + "')"; // changes the format
+  document.body.style.backgroundImage = imgUrl; // changes the background image
+  localStorage.setItem("BG-Image-Zed", imgUrl); // Saves background in localStorage
+}

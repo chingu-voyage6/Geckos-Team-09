@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+
+body{
+
+  background-image: url("https://images.unsplash.com/photo-1516692935701-4f35bff8b9f6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5e8b07db9ad1b8626288bbbf77471558&auto=format&fit=crop&w=750&q=80");
+
+}
+
+
 .task-container{
   position: absolute;
   top: 2em;
@@ -43,14 +51,12 @@
 }
 
 .style-task-paragraph{
-  /*position: relative;*/
   float: left;
   margin-top: 0.025em;
   max-width: 60%;
 }
 
 .style-task-delete{
-  /*position: relative;*/
   float: right;
   margin: 0;
   clear: right;
