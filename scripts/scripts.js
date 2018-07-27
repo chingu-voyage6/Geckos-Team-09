@@ -118,9 +118,23 @@ if(target.className == "style-checkbox"){
 
   var myNodeValue = JSON.stringify(myLocalJSON);
 
+
   // Update localStorage with new boolCheck value
   localStorage.setItem(myDivName, myNodeValue);
 
+<<<<<<< HEAD
+=======
+  // Add and Remove strikethrough class when checkbox is checked and unchecked
+  if(target.checked === true){
+    addClass(target.nextElementSibling, "strikethrough");
+  } else{
+    if(target.nextElementSibling.classList.contains("strikethrough")){
+      removeClass(target.nextElementSibling, "strikethrough");
+    } else{
+      return;
+    }
+  }
+>>>>>>> c5ce6587b02b0756861273ba2f8cf033af78189a
   } else {
     return;
   }
@@ -184,6 +198,12 @@ function addTask(_nodeValue, _divNameID){
     var element = document.querySelector(".style-to-do");
     element.appendChild(myDiv);
 
+    // Verify Checkbox is checked
+    if(myCheck.checked === true){
+      // Redo strikethrough on page load
+      addClass(myCheck.nextElementSibling, "strikethrough");
+    }
+
     //increment count
     count++;
 
@@ -221,4 +241,14 @@ function comparison(a, b) {
   // Return difference of divNameID number for sorting
   return parseInt(c[c.length - 1]) - parseInt(d[d.length - 1]);
 
+}
+
+// Function to more easily add classes
+function addClass(classElement, myClassName){
+  classElement.classList.add(myClassName);
+}
+
+// Function to more easily remove classes
+function removeClass(classElement, myClassName){
+  classElement.classList.remove(myClassName);
 }

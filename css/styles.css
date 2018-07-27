@@ -50,6 +50,10 @@ body{
   clear: left;
 }
 
+.strikethrough{
+  text-decoration: line-through;
+}
+
 .style-task-paragraph{
   float: left;
   margin-top: 0.025em;
