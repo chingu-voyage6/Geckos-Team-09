@@ -122,19 +122,18 @@ if(target.className == "style-checkbox"){
   // Update localStorage with new boolCheck value
   localStorage.setItem(myDivName, myNodeValue);
 
-<<<<<<< HEAD
-=======
+
   // Add and Remove strikethrough class when checkbox is checked and unchecked
   if(target.checked === true){
     addClass(target.nextElementSibling, "strikethrough");
   } else{
     if(target.nextElementSibling.classList.contains("strikethrough")){
+      // Remove strike if checkbox is clicked and it already has a strike
       removeClass(target.nextElementSibling, "strikethrough");
     } else{
       return;
     }
   }
->>>>>>> c5ce6587b02b0756861273ba2f8cf033af78189a
   } else {
     return;
   }
