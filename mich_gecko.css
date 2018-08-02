@@ -1,44 +1,93 @@
-body {    
-    background-color: white;
-    background-size: cover;
+body {
+  overflow-y: hidden;
+  /* background-color: white !important; */
+  font-family: 'Comfortaa', 'Nunito', 'Quicksand', sans-serif !important ;
 }
-
-
-.geckoMaster img {
-    min-height: 20rem;
-    position: relative;
-    display: table;
+.container-fluid {
     width: 100%;
-    height: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
+img {
+    /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+} 
 
-.geckoMaster h1 {
-    font-size: 4em;
-    margin:  0 auto;
-    position: absolute;
-    top: 120px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
+.centerText {
+  display: block;
+    top: 50%;
+    left: 50%;
+    width: 100%;
     text-align: center;
-    color: white;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    z-index: 1;
+}
+.centerText h1 {
+  /* font-family: 'Comfortaa', sans-serif; */
+  font-size: 4rem;
+  color: white;
 }
 
-.geckoMaster h5 {
-    font-size: 1.5em;
-    margin: auto;
+.bottomFunctions{
+    display: block;
+    top: 80%;
+    left: 51%;
+    width: 100%;
+    transform: translate(-50%,-50%);
     position: absolute;
-    top: 220px;
-    left: 0;
+    z-index: 1;
+}
+.leftSide{
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    color: rgba(255,255,255,1.0);
+    z-index: 100;
+    margin: 2em;
+}
+
+.rightSide{
+  margin: 2em;
+}
+.rightSide p {
+     font-size: 1.8em;
+    color: rgb(253, 249, 253);
+  }
+
+  .googleSearch{
+    font-family: 'Comfortaa', sans-serif;
+    font-size: .8em;
+    padding: .22em 0;
+  }
+
+  /* .rightSide .search { */
+    /* position: fixed;
+    z-index: 1;
+    /* left: 8px; 
+    right: 8%;
+    bottom: 160px;
+    margin-right: 8% */
+  /* } */
+
+  /* google search prompt in second div */
+/* .searchQuestion { */
+    /* left: 50%; */
+    /* font-size: 1em;
+    position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 200px;
     z-index: 1;
     text-align: center;
     color: white;

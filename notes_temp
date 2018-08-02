@@ -1,0 +1,84 @@
+<body>
+    <!-- main windw -->
+    <div class="container-fluid geckoMaster">
+            <!-- <img
+            !-- src="https://images.unsplash.com/photo-1419064642531-e575728395f2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=67fd942ed774f3de1db50cf3dd0065eb&auto=format&fit=crop&w=1950&q=80" -->
+            <!-- alt="beaut thing" -->
+          <!-- /> -->
+        <div class="row">
+          <div class="col-md-6 leftSide">
+            <h1 class="welcomeText">Hi there, Sammy!</h1>
+          </div>
+          <div class="col-md-6 rightSide" />
+          <h5 class="searchQuestion">What are you looking for today?</h5>
+          
+          <!-- google search -->
+    <div class="search" >
+        <form method="GET" action="https://google.com/search">
+            <input type="text" name="q" placeholder="google search" size="50%"/>
+            <input type="submit" value="search"/>
+        </form>
+    </div>
+        </div>
+        
+      </div>
+    <!-- <main>
+        <div class="container-fluid geckoMaster">
+            <h1>Practice Text Overlay</h1>
+            <h5>some additional text displayed</h5>
+            <img src="https://images.unsplash.com/photo-1419064642531-e575728395f2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=67fd942ed774f3de1db50cf3dd0065eb&auto=format&fit=crop&w=1950&q=80" />
+        </div>
+    </main> -->
+
+    <!--Task Box-->
+       <div class="task-container">
+         <div class="style-task">
+           <form class="task-form">
+             <input class="inputField" name="task" placeholder="What will you do today?" type="text">
+           </form>
+         </div>
+         <div class="style-to-do">
+         </div>
+       </div>
+
+    
+
+</body>
+
+*Reposting the Git Workflow*
+
+1. How to create a branch and push it to the remote repository
+  • `git branch <branch-name>`
+  • `git checkout <branch-name>`
+  • `git pull origin Develop`
+  • `git add .`
+  • `git commit -m "your message"`
+  • `git push origin <branch-name>`
+
+
+2. How to fetch a remote pull request to test and edit on your local workstation
+  • `git ls-remote origin` (List the refs and get the pull requests id)
+  • `git fetch origin pull/ID/head:<new-branch-name>`
+  • `git checkout <new-branch-name>`
+  • go over and/or change the files and code, and check for any conflicts *(Be sure to `add` and `commit` all changes before moving on to the next steps!)*
+  • `git checkout <branch-name>` (Navigate to the branch you want to merge the branch with your changes into)
+  • `git merge <new-branch-name>`
+  • `git push origin <branch-name>`
+  • `git branch -d <new-branch-name>` (delete the branch you used to house the pull request)
+
+Dez [8:35 PM]
+@mwasabi @Leo @Cynthia
+
+*Merge changes from Remote repository*
+
+1. You may want to pull from remote to get your local branch caught up, but if someone has made changes before you, it may say that there are conflicts, and that you need to merge them. These steps are to help solve this conflict.
+
+• `git mergetool` this will open the merge tool that will do the merges for you. It may tell you to press enter to start. Press Enter if it asks you to. After you do that you should see a weird screen with 3 windows on top and one window at the bottom.
+• Press `Ctrl w + j`  to move the focus to the bottom window
+• Enter `:diffg RE` and press Enter to merge the changes from the remote (RE) repository into your current project
+• Enter `:wqa` and press Enter to save and quit
+• Do a `git add .` and `git commit -m "Merge Message"` to add and commit the changes
+• You may have to do a `git rebase` afterward, but I didn't need to.
+
+Here's where I got my information from if you're still confused:
+https://gist.github.com/karenyyng/f19ff75c60f18b4b8

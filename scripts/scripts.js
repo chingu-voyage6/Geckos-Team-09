@@ -9,50 +9,50 @@ var count = 0;
 
 
 // Run onload
-window.onload = function(){
+window.onload = function () {
 
-var reg = /myDiv-name-\d/;
+  var reg = /myDiv-name-\d/;
 
-// Try if localStorage exists
-try{
+  // Try if localStorage exists
+  try {
 
-  // Push localStorage values to unorderedStorageArr
-  for(var i = 0; i < localStorage.length; i++){
-    // Check if key matches reg before adding it to unorderedStorageArr
-    if(localStorage.key(i).match(reg)){
-    unorderedStorageArr.push([localStorage.key(i), localStorage.getItem(localStorage.key(i))]);
-}
-  }
+    // Push localStorage values to unorderedStorageArr
+    for (var i = 0; i < localStorage.length; i++) {
+      // Check if key matches reg before adding it to unorderedStorageArr
+      if (localStorage.key(i).match(reg)) {
+        unorderedStorageArr.push([localStorage.key(i), localStorage.getItem(localStorage.key(i))]);
+      }
+    }
 
-  // Put Sorted Array values into orderedStorageArr
-  orderedStorageArr = unorderedStorageArr.sort(comparison);
+    // Put Sorted Array values into orderedStorageArr
+    orderedStorageArr = unorderedStorageArr.sort(comparison);
 
-  // Repopulate tasks onload
-  for(var i = 0; i < orderedStorageArr.length; i++){
+    // Repopulate tasks onload
+    for (var i = 0; i < orderedStorageArr.length; i++) {
 
       nodeValue = orderedStorageArr[i][1];
       divNameID = orderedStorageArr[i][0];
       addTask(nodeValue, divNameID);
+    }
+
+
+
+
+
+
+    // Change count to prevent count from being overwritten
+    var tempCountArr = orderedStorageArr[orderedStorageArr.length - 1][0].split("-");
+    var tempCount = parseInt(tempCountArr[tempCountArr.length - 1]);
+    count = tempCount + 1;
   }
-
-
-
-
-
-
-  // Change count to prevent count from being overwritten
-  var tempCountArr = orderedStorageArr[orderedStorageArr.length - 1][0].split("-");
-  var tempCount = parseInt(tempCountArr[tempCountArr.length - 1]);
-  count = tempCount + 1;
-}
-catch{
-  return;
-}
+  catch{
+    return;
+  }
 
 };
 
 // Listens for a form submission
-taskForm.addEventListener("submit", function(event){
+taskForm.addEventListener("submit", function (event) {
   // Prevents default action of reloading the page
   event.preventDefault();
 
@@ -76,17 +76,17 @@ taskForm.addEventListener("submit", function(event){
 
 
 // Delete element after the delete button is clicked
-toDoElement.addEventListener("click", function(event){
+toDoElement.addEventListener("click", function (event) {
   var target = event.target;
 
   // Stops it from deleting anything other than the style-task-delete parent
-  if(target.className == "style-task-delete"){
+  if (target.className == "style-task-delete") {
 
     // Remove entire div belonging to the target "Delete" button
     if (node.parentElement) {
-    target.parentElement.classList.toggle("removeAnime");
-  setTimeout(() => target.parentElement.remove(), 1000);
-  }
+      target.parentElement.classList.toggle("removeAnime");
+      setTimeout(() => target.parentElement.remove(), 1000);
+    }
     // Remove the task from localStorage as well
     localStorage.removeItem(target.parentElement.id);
 
@@ -102,38 +102,38 @@ toDoElement.addEventListener("click", function(event){
 
 
 // Update boolCheck when checkbox is clicked
-toDoElement.addEventListener("click", function(event){
+toDoElement.addEventListener("click", function (event) {
 
-var target = event.target;
+  var target = event.target;
 
-// Check if checkbox was clicked
-if(target.className == "style-checkbox"){
+  // Check if checkbox was clicked
+  if (target.className == "style-checkbox") {
 
-  // Get localStorage id and value, and change the value of boolCheck
-  var myDivName = target.parentElement.id;
-  var myLocalJSON = JSON.parse(localStorage.getItem(myDivName));
-  boolCheck = target.checked;
+    // Get localStorage id and value, and change the value of boolCheck
+    var myDivName = target.parentElement.id;
+    var myLocalJSON = JSON.parse(localStorage.getItem(myDivName));
+    boolCheck = target.checked;
 
-  myLocalJSON[1] = boolCheck;
+    myLocalJSON[1] = boolCheck;
 
-  var myNodeValue = JSON.stringify(myLocalJSON);
-
-
-  // Update localStorage with new boolCheck value
-  localStorage.setItem(myDivName, myNodeValue);
+    var myNodeValue = JSON.stringify(myLocalJSON);
 
 
-  // Add and Remove strikethrough class when checkbox is checked and unchecked
-  if(target.checked === true){
-    addClass(target.nextElementSibling, "strikethrough");
-  } else{
-    if(target.nextElementSibling.classList.contains("strikethrough")){
-      // Remove strike if checkbox is clicked and it already has a strike
-      removeClass(target.nextElementSibling, "strikethrough");
-    } else{
-      return;
+    // Update localStorage with new boolCheck value
+    localStorage.setItem(myDivName, myNodeValue);
+
+
+    // Add and Remove strikethrough class when checkbox is checked and unchecked
+    if (target.checked === true) {
+      addClass(target.nextElementSibling, "strikethrough");
+    } else {
+      if (target.nextElementSibling.classList.contains("strikethrough")) {
+        // Remove strike if checkbox is clicked and it already has a strike
+        removeClass(target.nextElementSibling, "strikethrough");
+      } else {
+        return;
+      }
     }
-  }
   } else {
     return;
   }
@@ -143,7 +143,7 @@ if(target.className == "style-checkbox"){
 
 
 // Adds Task
-function addTask(_nodeValue, _divNameID){
+function addTask(_nodeValue, _divNameID) {
 
   // Turn _nodeValue into JSON array
   _nodeValue = JSON.parse(_nodeValue);
@@ -163,11 +163,11 @@ function addTask(_nodeValue, _divNameID){
     myCheck.setAttribute("type", "checkbox");
 
     // Make checkbox value change to the value it has saved
-    if(_nodeValue[1]){
+    if (_nodeValue[1]) {
       myCheck.checked = nodeValue[1];
-  } else{
+    } else {
       myCheck.checked = boolCheck;
-  }
+    }
 
     // Make paragraph and give it the task text as a value
     var para = document.createElement("p");
@@ -176,8 +176,9 @@ function addTask(_nodeValue, _divNameID){
 
     // Create Delete button
     var btn = document.createElement("BUTTON");
-    var btnNode = document.createTextNode("DELETE");
+    var btnNode = document.createTextNode("");
     btn.appendChild(btnNode);
+
 
     // Add class to the paragraph, myDiv, and delete button
     myDiv.classList.add("style-task-div");
@@ -198,7 +199,7 @@ function addTask(_nodeValue, _divNameID){
     element.appendChild(myDiv);
 
     // Verify Checkbox is checked
-    if(myCheck.checked === true){
+    if (myCheck.checked === true) {
       // Redo strikethrough on page load
       addClass(myCheck.nextElementSibling, "strikethrough");
     }
@@ -206,19 +207,19 @@ function addTask(_nodeValue, _divNameID){
     //increment count
     count++;
 
-  }else{
+  } else {
     return;
   }
 }
 
 
-function addLocalStorage(_nodeValue, _divNameID){
+function addLocalStorage(_nodeValue, _divNameID) {
 
-// Temp JSON holder
-var myJSON = JSON.parse(_nodeValue);
+  // Temp JSON holder
+  var myJSON = JSON.parse(_nodeValue);
 
-// Check if localStorage has value after removing spaces
-  if(myJSON[0].replace(/\s/g, "")){
+  // Check if localStorage has value after removing spaces
+  if (myJSON[0].replace(/\s/g, "")) {
     // Make localStorage
     localStorage.setItem(_divNameID, _nodeValue);
 
@@ -243,11 +244,11 @@ function comparison(a, b) {
 }
 
 // Function to more easily add classes
-function addClass(classElement, myClassName){
+function addClass(classElement, myClassName) {
   classElement.classList.add(myClassName);
 }
 
 // Function to more easily remove classes
-function removeClass(classElement, myClassName){
+function removeClass(classElement, myClassName) {
   classElement.classList.remove(myClassName);
 }
