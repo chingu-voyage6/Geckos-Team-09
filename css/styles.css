@@ -11,17 +11,19 @@ body{
 
 }
 
+.task-container{ 
+    height: auto;
+    width: 320px;
+    padding: 0;
+    position: absolute;
+    display: block;
+    opacity: 1;
+    overflow-y: hidden;
+    text-align: left;
+    bottom: 120px;
+    left: 50px;
+}
 
-
-/* .task-container{ */
-  /* position: absolute;
-  top: 2em;
-  right: 4em;
-  width: 15em;
-  height: 10em;
-  /* background-color: grey; 
-  z-index: 2000; */
-/* } */
 
 .style-task{
   position: relative;
@@ -38,7 +40,7 @@ body{
     color: white;
     -webkit-text-fill-color: rgb(253, 251, 251);
     width: -webkit-fill-available;
-    font-size: 1.8em;
+    font-size: 1.3em;
     text-align: center;
 }
 
@@ -102,12 +104,16 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 }
 
 button.style-task-delete::before {
-  font-family: FontAwesome;
+  font-family: 'Font Awesome 5 Free';
    display: inline-block;
    padding-right: 6px;
    vertical-align: middle;
+   
 }
 
-button.style-task-delete::before {
-  content: "\f1f8";
+button:before {
+  font-family: "Font Awesome 5 Brands";
+  font-weight: 400;
+  content: "\f2ed";
+  color: white;
 }

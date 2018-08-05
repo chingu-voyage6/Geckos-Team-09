@@ -19,7 +19,7 @@ img {
   width: 100%;
   height: auto;
   /* Set up positioning */
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 } 
@@ -59,10 +59,16 @@ img {
 }
 
 .rightSide{
-  margin: 2em;
+    position: absolute;
+    display: block;
+    opacity: 1;
+    overflow-y: hidden;
+    text-align: left;
+    bottom: 120px;
+    right: 50px;
 }
 .rightSide p {
-     font-size: 1.8em;
+     font-size: 1.3em;
     color: rgb(253, 249, 253);
   }
 
@@ -71,24 +77,3 @@ img {
     font-size: .8em;
     padding: .22em 0;
   }
-
-  /* .rightSide .search { */
-    /* position: fixed;
-    z-index: 1;
-    /* left: 8px; 
-    right: 8%;
-    bottom: 160px;
-    margin-right: 8% */
-  /* } */
-
-  /* google search prompt in second div */
-/* .searchQuestion { */
-    /* left: 50%; */
-    /* font-size: 1em;
-    position: absolute;
-    right: 0;
-    bottom: 200px;
-    z-index: 1;
-    text-align: center;
-    color: white;
-}
