@@ -56,22 +56,27 @@ taskForm.addEventListener("submit", function (event) {
   // Prevents default action of reloading the page
   event.preventDefault();
 
-  // Create bool for checkbox as false
-  boolCheck = false;
+  var target = event.target;
 
-  // Assign text and bool values to nodeValue
-  JSONArr.push(taskForm[0].value);
-  JSONArr.push(boolCheck);
-  nodeValue = JSON.stringify(JSONArr);
+  if(target.className == "task-form"){
+    // Create bool for checkbox as false
+    boolCheck = false;
 
-  divNameID = "myDiv-name-" + count;
+    // Assign text and bool values to nodeValue
+    JSONArr.push(taskForm[0].value);
+    JSONArr.push(boolCheck);
+    nodeValue = JSON.stringify(JSONArr);
 
-  addTask(nodeValue, divNameID);
-  addLocalStorage(nodeValue, divNameID);
+    divNameID = "myDiv-name-" + count;
 
-  // Clear JSONArr value
-  JSONArr = [];
+    addTask(nodeValue, divNameID);
+    addLocalStorage(nodeValue, divNameID);
 
+    // Clear JSONArr value
+    JSONArr = [];
+  } else {
+    return;
+  }
 });
 
 
@@ -79,8 +84,11 @@ taskForm.addEventListener("submit", function (event) {
 toDoElement.addEventListener("click", function (event) {
   var target = event.target;
 
+  console.log(target.className);
   // Stops it from deleting anything other than the style-task-delete parent
-  if (target.className == "style-task-delete") {
+  //if (target.className == "style-task-delete" && target.className == "trash-can-style") {
+  if (target.classList.contains("style-task-delete")) {
+
 
     // Remove entire div belonging to the target "Delete" button
     if (node.parentElement) {
@@ -179,18 +187,32 @@ function addTask(_nodeValue, _divNameID) {
     var btnNode = document.createTextNode("");
     btn.appendChild(btnNode);
 
+    // Create span for trash and Checkbox
+    var trashSpan = document.createElement("SPAN");
+    //var checkSpan = document.createElement("SPAN");
+
+    // Append span to BUTTON
+    btn.appendChild(trashSpan);
+
+
 
     // Add class to the paragraph, myDiv, and delete button
     myDiv.classList.add("style-task-div");
     myCheck.classList.add("style-checkbox");
     para.classList.add("style-task-paragraph");
     btn.classList.add("style-task-delete");
+    btn.classList.add("trash-can-style");
+    trashSpan.classList.add("far");
+    trashSpan.classList.add("fa-trash-alt");
+    //checkSpan.classList.add("checkmark");
+
 
     // Add id to paragraph
     myDiv.id = _divNameID;
 
     // Make paragraph, checkbox, and button a child of myDiv
     myDiv.appendChild(myCheck);
+    //myDiv.appendChild(checkSpan);
     myDiv.appendChild(para);
     myDiv.appendChild(btn);
 
@@ -213,7 +235,27 @@ function addTask(_nodeValue, _divNameID) {
 }
 
 
-function addLocalStorage(_nodeValue, _divNameID) {
+// Clears Search bar
+function clearSearchBar(){
+  var inputElement = document.querySelector(".search-input-style");
+  if(inputElement.value != ""){
+    inputElement.value = ""; // Clears Search box
+    inputElement.blur(); // Removes the cursor
+} else {
+  return;
+}
+
+}
+
+// Timeout called onsubmit
+function myTimeoutFunc(){
+  // Calls clearSearchBar after 3 seconds
+  var myTimeout = setTimeout(clearSearchBar, 3000);
+}
+
+
+
+function addLocalStorage(_nodeValue, _divNameID){
 
   // Temp JSON holder
   var myJSON = JSON.parse(_nodeValue);

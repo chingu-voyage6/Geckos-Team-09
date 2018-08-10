@@ -2,22 +2,30 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>Gecko 9 Team</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="mich_gecko.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    <meta charset="UTF-8">
+    <title>Gecko 9 Team</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+    integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+      crossorigin="anonymous">
+    <link rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+    integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
     crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="mich_gecko.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="scripts/scripts.js" defer type="text/javascript"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Comfortaa|Nunito|Quicksand" rel="stylesheet">
 
-  
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
     crossorigin="anonymous">
 
     <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
-  <script src="scripts/scripts.js" defer type="text/javascript"></script>
 
 </head>
 
@@ -51,9 +59,37 @@
             </div>
           </div>
         </div>
-        <div class="rightSide">
+
+
+
+
+        <!-- Overlay -->
+        <div class="bg-overlay">
+        </div>
+
+        <!--Task Box-->
+          <!-- <div class="task-container">
+             <div class="style-task">
+               <form class="task-form">
+                 <input name="task" placeholder="What will you do today?" type="text">
+               </form>
+             </div>
+             <div class="style-to-do">
+             </div>
+           </div>
+         -->
+
+
+        <!-- Google Search Bar -->
+        <div class="search-div-style">
+          <form method="get" class="search-form-style" action="https://www.google.com/search" onsubmit="myTimeoutFunc()" target="_blank">
+            <input class="search-input-style" type="text" name="q" placeholder="Search..."/>
+            <button type="submit" class="search-button-style" name="search"> <i class="fas fa-search"></i></button>
+          </form>
+        </div>
+        <!-- <div class="rightSide"> -->
             <!-- google search -->
-            <p class="searchQuestion">What are you in search of ?</p>
+          <!--  <p class="searchQuestion">What are you in search of ?</p>
             <div class="search">
               <form method="GET" action="https://google.com/search" target="_blank">
                 <input class="googleSearch" type="text" name="q" placeholder="google search" size="50%" />
@@ -61,8 +97,9 @@
               </form>
             </div>
           </div>
+        -->
 
-  </div>
+  <!-- </div> -->
 </body>
 
 </html>

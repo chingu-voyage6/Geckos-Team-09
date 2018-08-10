@@ -7,21 +7,23 @@
 
 body{
 
-  background-image: url("https://images.unsplash.com/photo-1516692935701-4f35bff8b9f6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5e8b07db9ad1b8626288bbbf77471558&auto=format&fit=crop&w=750&q=80");
 
 }
 
-.task-container{ 
-    height: auto;
-    width: 320px;
-    padding: 0;
-    position: absolute;
-    display: block;
-    opacity: 1;
-    overflow-y: hidden;
-    text-align: left;
-    bottom: 120px;
-    left: 50px;
+.task-container{
+  height: auto;
+  width: 320px;
+  padding: 0;
+  position: absolute;
+  display: block;
+  opacity: 1;
+  text-align: left;
+  bottom: 120px;
+  left: 50px;
+  z-index: 2000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 400px;
 }
 
 
@@ -64,7 +66,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     border-bottom-right-radius: 3px;
     border-top-left-radius: 1px;
     border-top-right-radius: 1px;
-    
+
 
 }
 
@@ -74,10 +76,24 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   margin: .5em;
 }
 
+/* ===== Checkbox style ===== */
+
+
+
+
 .style-checkbox{
   float: left;
   clear: left;
   margin-right: .3em;
+  margin-top: 0.25em;
+  border-radius: 50%;
+}
+
+/* ===== Checkbox style ===== */
+
+
+.strikethrough{
+  text-decoration: line-through;
 }
 
 .style-task-paragraph{
@@ -93,7 +109,8 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   /* margin: 0; */
   clear: right;
   background: transparent;
-    border-style: none;
+  border-style: none;
+  color: white;
 }
 
 .removeAnime {
@@ -103,17 +120,46 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   opacity: 0;
 }
 
-button.style-task-delete::before {
-  font-family: 'Font Awesome 5 Free';
-   display: inline-block;
-   padding-right: 6px;
-   vertical-align: middle;
-   
+
+/* ===== Search Bar style ===== */
+.search-div-style{
+  position: absolute;
+  bottom: 100px;
+  right: 50px;
+  width: auto;
+  height: 5em;
+  background:rgba(50,53,62,0.6);
+  border-radius: 3px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 200;
 }
 
-button:before {
-  font-family: "Font Awesome 5 Brands";
-  font-weight: 400;
-  content: "\f2ed";
-  color: white;
+.search-input-style{
+  position: relative;
+  background:rgba(255,255,255,0.9);
+  box-shadow: inset 0 0 2px black;
+  text-align: center;
+  width: 15em;
+  height: 2.25em;
+  z-index: 201;
 }
+
+.search-form-style{
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+.search-button-style{
+  height: 2.25em;
+  border-radius: 3px;
+  background-color: rgb(0, 147, 204);
+border-color: rgb(22, 96, 209);
+  color: lightgrey;
+}
+/* ===== Search Bar style ===== */
