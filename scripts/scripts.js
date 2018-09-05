@@ -49,6 +49,13 @@ window.onload = function () {
     return;
   }
 
+
+
+// Call styleCheckboxes() function to style checkboxes after they are loaded
+styleCheckboxes();
+
+
+
 };
 
 // Listens for a form submission
@@ -77,6 +84,10 @@ taskForm.addEventListener("submit", function (event) {
   } else {
     return;
   }
+
+// Call styleCheckboxes() again function to style checkboxes after they are loaded
+styleCheckboxes();
+
 });
 
 
@@ -84,16 +95,17 @@ taskForm.addEventListener("submit", function (event) {
 toDoElement.addEventListener("click", function (event) {
   var target = event.target;
 
-  console.log(target.className);
   // Stops it from deleting anything other than the style-task-delete parent
-  //if (target.className == "style-task-delete" && target.className == "trash-can-style") {
-  if (target.classList.contains("style-task-delete")) {
+  if (target.classList.contains("style-task-delete") || target.parentElement.classList.contains("style-task-delete")) {
 
 
     // Remove entire div belonging to the target "Delete" button
-    if (node.parentElement) {
+    if (target.parentElement.classList.contains("style-task-div")) { // Remove for Firefox
       target.parentElement.classList.toggle("removeAnime");
       setTimeout(() => target.parentElement.remove(), 1000);
+    } else { // Remove for Chrome and others
+      target.parentElement.parentElement.classList.toggle("removeAnime");
+      setTimeout(() => target.parentElement.parentElement.remove(), 1000);
     }
     // Remove the task from localStorage as well
     localStorage.removeItem(target.parentElement.id);
@@ -115,10 +127,10 @@ toDoElement.addEventListener("click", function (event) {
   var target = event.target;
 
   // Check if checkbox was clicked
-  if (target.className == "style-checkbox") {
+  if (target.className == ("style-checkbox")) {
 
     // Get localStorage id and value, and change the value of boolCheck
-    var myDivName = target.parentElement.id;
+    var myDivName = target.parentElement.parentElement.parentElement.parentElement.id; // Get the parent of the parent of the target
     var myLocalJSON = JSON.parse(localStorage.getItem(myDivName));
     boolCheck = target.checked;
 
@@ -133,11 +145,11 @@ toDoElement.addEventListener("click", function (event) {
 
     // Add and Remove strikethrough class when checkbox is checked and unchecked
     if (target.checked === true) {
-      addClass(target.nextElementSibling, "strikethrough");
+      addClass(target.parentElement.parentElement.parentElement.nextElementSibling, "strikethrough");
     } else {
-      if (target.nextElementSibling.classList.contains("strikethrough")) {
+      if (target.parentElement.parentElement.parentElement.nextElementSibling.classList.contains("strikethrough")) {
         // Remove strike if checkbox is clicked and it already has a strike
-        removeClass(target.nextElementSibling, "strikethrough");
+        removeClass(target.parentElement.parentElement.parentElement.nextElementSibling, "strikethrough");
       } else {
         return;
       }
@@ -166,9 +178,17 @@ function addTask(_nodeValue, _divNameID) {
     var myDiv = document.createElement("div");
 
 
-    // Make checkbox
+    // Make checkbox, div, form, and label
+    var checkboxDiv = document.createElement("div");
     var myCheck = document.createElement("INPUT");
     myCheck.setAttribute("type", "checkbox");
+    var checkboxLabel = document.createElement("LABEL");
+    checkboxLabel.htmlFor = "checkbox1"; // Set for of label
+    var checkboxForm = document.createElement("FORM");
+    var att = document.createAttribute("role");
+    att.value = "form";
+    checkboxForm.setAttributeNode(att);
+    var customCheckDiv = document.createElement("div");
 
     // Make checkbox value change to the value it has saved
     if (_nodeValue[1]) {
@@ -188,8 +208,7 @@ function addTask(_nodeValue, _divNameID) {
     btn.appendChild(btnNode);
 
     // Create span for trash and Checkbox
-    var trashSpan = document.createElement("SPAN");
-    //var checkSpan = document.createElement("SPAN");
+    var trashSpan = document.createElement("i");
 
     // Append span to BUTTON
     btn.appendChild(trashSpan);
@@ -198,21 +217,34 @@ function addTask(_nodeValue, _divNameID) {
 
     // Add class to the paragraph, myDiv, and delete button
     myDiv.classList.add("style-task-div");
+    checkboxDiv.classList.add("rounder");
     myCheck.classList.add("style-checkbox");
     para.classList.add("style-task-paragraph");
     btn.classList.add("style-task-delete");
     btn.classList.add("trash-can-style");
     trashSpan.classList.add("far");
     trashSpan.classList.add("fa-trash-alt");
-    //checkSpan.classList.add("checkmark");
+
+    customCheckDiv.classList.add("customCheckbox");
 
 
-    // Add id to paragraph
+    // Add id to paragraph and myCheck
     myDiv.id = _divNameID;
 
-    // Make paragraph, checkbox, and button a child of myDiv
-    myDiv.appendChild(myCheck);
-    //myDiv.appendChild(checkSpan);
+
+
+    // Make customCheckDiv and checkboxLabel a child of checkboxDiv
+    checkboxDiv.appendChild(customCheckDiv);
+    checkboxDiv.appendChild(checkboxLabel);
+
+    // Make myCheck a child of customCheckDiv
+    customCheckDiv.appendChild(myCheck);
+
+    // Make checkboxDiv a child of checkboxForm
+    checkboxForm.appendChild(checkboxDiv);
+
+    // Make paragraph, checkboxForm, and button a child of myDiv
+    myDiv.appendChild(checkboxForm);
     myDiv.appendChild(para);
     myDiv.appendChild(btn);
 
@@ -223,7 +255,8 @@ function addTask(_nodeValue, _divNameID) {
     // Verify Checkbox is checked
     if (myCheck.checked === true) {
       // Redo strikethrough on page load
-      addClass(myCheck.nextElementSibling, "strikethrough");
+      addClass(myCheck.parentElement.parentElement.parentElement.nextElementSibling, "strikethrough");
+      addClass(myCheck.parentElement, "customCheckboxChecked");
     }
 
     //increment count
@@ -293,4 +326,25 @@ function addClass(classElement, myClassName) {
 // Function to more easily remove classes
 function removeClass(classElement, myClassName) {
   classElement.classList.remove(myClassName);
+}
+
+
+
+
+function styleCheckboxes(){
+  $(document).ready(function(){
+    var checkboxArr = $(".style-checkbox");
+
+    checkboxArr.each(function(){
+      $(this).before('<span>&#10004;</span>');
+    });
+
+    checkboxArr.change(function(){
+      if($(this).is(':checked')){
+       $(this).parent().addClass('customCheckboxChecked');
+      } else {
+       $(this).parent().removeClass('customCheckboxChecked');
+      }
+    });
+  });
 }
