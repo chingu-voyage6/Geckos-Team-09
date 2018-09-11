@@ -77,3 +77,33 @@ img {
     font-size: .8em;
     padding: .22em 0;
   }
+
+
+/* clock */
+.clock {
+  color: white;
+  /* font-weight: thin; */
+  font-size: 1.5em;
+  /* z-index: 1000; */
+  display: block;
+    top: 60%;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
+
+/* hiding the tasks */
+.hideArrow {
+  z-index: 100;
+  color: white;
+  position: absolute;
+  bottom: 87px;
+    left: 50px;
+background: none;
+border: none;
+}
+button.hideArrow::before{
+  content: none;
+}

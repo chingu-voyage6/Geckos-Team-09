@@ -22,6 +22,8 @@
 </head>
 
 <body>
+
+  
   <!-- main windw-->
   <!-- keyword search from unsplashAPI -->
   <!-- <img src="https://source.unsplash.com/1600x900/?mountain,water/daily"
@@ -35,13 +37,15 @@
       <div class="centerText">
         <h1 class="welcomeText">Hi there!</h1>
       </div>
+      <div class="clock"></div>
     </div>
     <!-- <div class="bottomFunctions"> -->
 
       <!-- <div class="row secondRow"> -->
         <div class="leftSide">
+          
           <!--Task Box-->
-          <div class="task-container">
+          <div class="task-container" id="task-container-display" >
             <div class="style-task">
               <form class="task-form">
                 <input class="inputField" name="task" placeholder="What will you do today?" type="text">
@@ -50,7 +54,11 @@
             <div class="style-to-do">
             </div>
           </div>
+          <div>
+              <button class ="hideArrow" onClick="displayTasks()" ><i class="fas fa-boxes"></i> Task List</button>
+          </div>
         </div>
+        
         <div class="rightSide">
             <!-- google search -->
             <p class="searchQuestion">What are you in search of ?</p>

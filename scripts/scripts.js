@@ -252,3 +252,65 @@ function addClass(classElement, myClassName) {
 function removeClass(classElement, myClassName) {
   classElement.classList.remove(myClassName);
 }
+
+//create a working clock
+
+// unction createClock () {
+  //     var currentTime = new Date();
+  //     var currentHours = currentTime.getHours();
+  //     var currentMinutes = currentTime.getMinutes();
+  //     // var currentSeconds = currentTime.getSeconds();
+  
+  //     //adds a 0 before single digit numbers to minutes 
+  //     currentMinutes = ( currentMinutes < 10 ? "0" : "") + currentMinutes;
+  
+  //     //selects either AM or PM 
+  //     var timeOfDay = ( currentHours < 12) ? "AM" : "PM";
+  
+  //     //converts to 12-hour clock 
+  //     currentHours = (currentHours > 12) ? currentHours - 12 : currentHours; 
+  
+  //     // converst from "0" to "12"
+  //     currentHours = ( currentHours == 0) ? 12 : currentHours; 
+      
+function clock () {
+  var makeTime = new Date() ;
+  hours= makeTime.getHours(),
+  minutes = makeTime.getMinutes(),
+  seconds = makeTime.getSeconds();
+
+  //add pm or am 
+  var timeOfDay = ( hours < 12) ? "AM" : "PM";
+
+  //adds a 0 before single digit numbers to minutes 
+      minutes = ( minutes < 10 ? "0" : "") + minutes;
+
+//adds a 0 before single digit numbers to hours 
+      hours = ( hours < 10 ? "0" : "") + hours;
+
+//converts to 12-hour clock 
+      hours = (hours > 12) ? hours - 12 : hours; 
+// converst from "0" to "12"
+      hours = (hours == 0) ? 12 : hours;
+  
+
+  document.querySelectorAll('.clock')[0].innerHTML ='Currently it\'s ' + numbers(hours) + ":" + numbers(minutes) + " " + timeOfDay;
+
+  function numbers(formatting) {
+    if(formatting < 0) {
+      formatting = "0" + formatting 
+    }
+    return formatting;
+  }
+}
+setInterval(clock, 1000);
+
+//hiding the tasks under an icon 
+function displayTasks() {
+  var x = document.getElementById("task-container-display");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}

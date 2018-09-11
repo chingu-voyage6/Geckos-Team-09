@@ -70,3 +70,4 @@ function randomImg(){
   document.body.style.backgroundImage = imgUrl; // changes the background image
   localStorage.setItem("BG-Image-Zed", imgUrl); // Saves background in localStorage
 }
+
