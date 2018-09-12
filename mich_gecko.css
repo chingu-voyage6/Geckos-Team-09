@@ -22,7 +22,7 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-} 
+}
 
 .centerText {
   display: block;
@@ -38,6 +38,13 @@ img {
   /* font-family: 'Comfortaa', sans-serif; */
   font-size: 4rem;
   color: white;
+  z-index: 1;
+
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  3px 3px 0 #00000080;
 }
 
 .bottomFunctions{
@@ -54,7 +61,7 @@ img {
     font-style: normal;
     font-size: 18px;
     color: rgba(255,255,255,1.0);
-    z-index: 100;
+    z-index: 2000;
     margin: 2em;
 }
 
@@ -67,6 +74,49 @@ img {
     bottom: 120px;
     right: 50px;
 }
+
+/*
+.bg-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 5;
+}
+
+.geckoMaster{
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 20em;
+  height: 7em;
+  border-radius: 25%;
+  z-index: 200;
+}
+
+.geckoMaster h1 {
+  font-size: 4em;
+  color: rgba(225,225,225,1);
+
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  3px 3px 0 #000;
+
+  font-family: 'Lato', 'Verdana', sans-serif;*/
+
 .rightSide p {
      font-size: 1.3em;
     color: rgb(253, 249, 253);

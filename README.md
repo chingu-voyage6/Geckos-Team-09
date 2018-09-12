@@ -3,11 +3,6 @@
 A task manager similar to the Momentum browser extension with added functionality | Chingu Voyage-6 | https://chingu.io/
 
 
-## Technology Stack
-
-* React
-
-
 ## MVP
 
 ### Background
