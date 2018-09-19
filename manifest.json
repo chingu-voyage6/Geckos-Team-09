@@ -2,6 +2,13 @@
   "manifest_version": 2,
   "name": "KineticU",
   "version": "0.1",
+
+  "description": "A task manager with increased functionality.",
+
+  "icons": {
+    "48": "Images/icon-48.png",
+    "96": "Images/icon-96.png"
+  },
   "background": {
     "scripts": ["scripts/background.js"]
   },
