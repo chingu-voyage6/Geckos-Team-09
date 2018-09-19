@@ -1,5 +1,7 @@
 var taskForm = document.querySelector('.task-form');
 var toDoElement = document.querySelector('.style-to-do');
+var hideTaskElement = document.querySelector('.hideArrow');
+var searchBarElement = document.querySelector('.search-form-style');
 var checkboxElement = document.querySelector('.style-checkbox');
 var elementList, divNameID, nodeValue, node, boolCheck;
 var unorderedStorageArr = [];
@@ -53,6 +55,17 @@ styleCheckboxes();
 
 };
 
+
+// Listen for search bar submission
+searchBarElement.addEventListener("submit", function (event){
+  var target = event.target;
+
+  if(target.className == "search-form-style"){
+    myTimeoutFunc(); // Start the timeout function
+  }
+});
+
+
 // Listens for a form submission
 taskForm.addEventListener("submit", function (event) {
   // Prevents default action of reloading the page
@@ -85,6 +98,15 @@ styleCheckboxes();
 
 });
 
+// Hide task list after Task List button is clicked
+hideTaskElement.addEventListener("click", function (event){
+  var target = event.target;
+
+  if(target.className == "hideArrow"){
+    displayTasks(); // Toggle task list
+  }
+});
+
 
 // Delete element after the delete button is clicked
 toDoElement.addEventListener("click", function (event) {
@@ -98,12 +120,15 @@ toDoElement.addEventListener("click", function (event) {
     if (target.parentElement.classList.contains("style-task-div")) { // Remove for Firefox
       target.parentElement.classList.toggle("removeAnime");
       setTimeout(() => target.parentElement.remove(), 1000);
+      // Remove the task from localStorage as well
+      localStorage.removeItem(target.parentElement.id);
     } else { // Remove for Chrome and others
       target.parentElement.parentElement.classList.toggle("removeAnime");
       setTimeout(() => target.parentElement.parentElement.remove(), 1000);
+      // Remove the task from localStorage as well
+      localStorage.removeItem(target.parentElement.parentElement.id);
     }
-    // Remove the task from localStorage as well
-    localStorage.removeItem(target.parentElement.id);
+
 
     // Get all elements that have the correct id
     elementList = document.querySelectorAll("[id^=myDiv-name]");
@@ -344,40 +369,40 @@ function styleCheckboxes(){
   });
 }
 
-//working clock 
+//working clock
 function clock () {
   var makeTime = new Date() ;
   hours= makeTime.getHours(),
   minutes = makeTime.getMinutes(),
   seconds = makeTime.getSeconds();
 
-  //add pm or am 
+  //add pm or am
   var timeOfDay = ( hours < 12) ? "AM" : "PM";
 
-  //adds a 0 before single digit numbers to minutes 
+  //adds a 0 before single digit numbers to minutes
       minutes = ( minutes < 10 ? "0" : "") + minutes;
 
-//adds a 0 before single digit numbers to hours 
+//adds a 0 before single digit numbers to hours
       hours = ( hours < 10 ? "0" : "") + hours;
 
-//converts to 12-hour clock 
-      hours = (hours > 12) ? hours - 12 : hours; 
+//converts to 12-hour clock
+      hours = (hours > 12) ? hours - 12 : hours;
 // converst from "0" to "12"
       hours = (hours == 0) ? 12 : hours;
-  
+
 
   document.querySelectorAll('.clock')[0].innerHTML ='Currently it\'s ' + numbers(hours) + ":" + numbers(minutes) + " " + timeOfDay;
 
   function numbers(formatting) {
     if(formatting < 0) {
-      formatting = "0" + formatting 
+      formatting = "0" + formatting
     }
     return formatting;
   }
 }
 setInterval(clock, 1000);
 
-//hiding the tasks under an icon 
+//hiding the tasks under an icon
 function displayTasks() {
   var x = document.getElementById("task-container-display");
   if (x.style.display === "none") {

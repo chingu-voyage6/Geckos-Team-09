@@ -157,3 +157,7 @@ border: none;
 button.hideArrow::before{
   content: none;
 }
+
+.hideArrow:hover{
+  cursor: pointer;
+}

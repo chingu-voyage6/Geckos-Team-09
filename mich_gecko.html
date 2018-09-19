@@ -2,9 +2,13 @@
 <html>
 
 <head>
+
     <meta charset="UTF-8">
     <title>Gecko 9 Team</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" defer type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js" defer type="text/javascript"></script>
+
     <link rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -19,8 +23,6 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" defer type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js" defer type="text/javascript"></script>
 
 
 
@@ -33,7 +35,7 @@
 
 <body>
 
-  
+
   <!-- main windw-->
   <!-- keyword search from unsplashAPI -->
 
@@ -55,8 +57,12 @@
 
       <!-- <div class="row secondRow"> -->
         <div class="leftSide">
-          
+
           <!--Task Box-->
+          <!--
+            onClick="displayTasks()"
+            onsubmit="myTimeoutFunc()"
+          -->
           <div class="task-container mCustomScrollbar" id="task-container-display" data-mcs-theme="minimal">
             <div class="style-task">
               <form class="task-form">
@@ -67,10 +73,10 @@
             </div>
           </div>
           <div>
-              <button class ="hideArrow" onClick="displayTasks()" ><i class="fas fa-angle-double-up"></i> Task List</button>
+              <button class ="hideArrow"  ><i class="fas fa-angle-double-up"></i> Task List</button>
           </div>
         </div>
-        
+
         <div class="rightSide">
             <!-- google search -->
             <!-- <p class="searchQuestion">What are you in search of ?</p>
@@ -88,7 +94,7 @@
 
         <!-- Google Search Bar -->
         <div class="search-div-style">
-          <form method="get" class="search-form-style" action="https://www.google.com/search" onsubmit="myTimeoutFunc()" target="_blank">
+          <form method="get" class="search-form-style" action="https://www.google.com/search"  target="_blank">
             <input class="search-input-style" type="text" name="q" placeholder="Search..."/>
             <button type="submit" class="search-button-style" name="search"> <i class="fas fa-search"></i></button>
           </form>
